@@ -1,3 +1,4 @@
+
 let staticCacheName = 'restaurant-static-v1';
 
 self.addEventListener('install', function(event) {
@@ -22,7 +23,11 @@ self.addEventListener('install', function(event) {
 				'./img/7.jpg',
 				'./img/8.jpg',
 				'./img/9.jpg',
-				'./img/10.jpg'
+				'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css',
+				'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css',
+				'./img/10.jpg',
+				'http://localhost:8000/marker-icon-2x.png',
+				'http://localhost:8000/marker-shadow.png'
 			]);
 		})
 	);
@@ -72,7 +77,7 @@ self.addEventListener('fetch', function(event) {
             // to clone it so we have two streams.
             var responseToCache = response.clone();
 
-            caches.open(CACHE_NAME)
+            caches.open('restaurant-static-v1')
               .then(function(cache) {
                 cache.put(event.request, responseToCache);
               });
